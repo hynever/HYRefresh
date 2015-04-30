@@ -39,6 +39,32 @@ static CGFloat const kDelayTime = 1.5;
 
 @end
 
+@interface HYStatusWindow : UIWindow
+
+@end
+
+@implementation HYStatusWindow
+
+- (void)setHidden:(BOOL)hidden{
+
+    static BOOL ing = NO;
+    if(ing && hidden) return;
+    ing = YES;
+
+    self.alpha = hidden;
+    [UIView animateWithDuration:kFadeDuration animations:^{
+        self.alpha = !hidden;
+        
+    } completion:^(BOOL finished) {
+        [super setHidden:!self.alpha];
+        
+        ing = NO;
+    }];
+
+}
+
+@end
+
 @implementation HYStatusBarWindow
 
 #pragma mark - 工厂方法
@@ -148,7 +174,7 @@ static CGFloat const kDelayTime = 1.5;
 -(UIWindow *)window
 {
     if (!_window) {
-        _window = [[UIWindow alloc] init];
+        _window = [[HYStatusWindow alloc] init];
         _window.backgroundColor = [UIColor blackColor];
         _window.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _window.windowLevel = UIWindowLevelAlert;
