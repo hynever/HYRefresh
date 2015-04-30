@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FB9A52EF1AF08F0800392B68 /* UIScrollView+HYRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9A52EE1AF08F0800392B68 /* UIScrollView+HYRefresh.m */; };
-		FB9A52F61AF0D6D100392B68 /* HYStatusBarWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9A52F51AF0D6D100392B68 /* HYStatusBarWindow.m */; };
-		FBCA26ED1AF12B1700FF482C /* HYRefreshModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA26EC1AF12B1700FF482C /* HYRefreshModel.m */; };
+		FB70593D1AF2053A00790172 /* HYConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7059351AF2053A00790172 /* HYConstant.m */; };
+		FB70593E1AF2053A00790172 /* HYRefreshModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7059381AF2053A00790172 /* HYRefreshModel.m */; };
+		FB70593F1AF2053A00790172 /* HYStatusBarWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FB70593A1AF2053A00790172 /* HYStatusBarWindow.m */; };
+		FB7059401AF2053A00790172 /* UIScrollView+HYRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = FB70593C1AF2053A00790172 /* UIScrollView+HYRefresh.m */; };
 		FBF462231AEFD9C000EACE4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF462221AEFD9C000EACE4B /* main.m */; };
 		FBF462261AEFD9C000EACE4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF462251AEFD9C000EACE4B /* AppDelegate.m */; };
 		FBF462291AEFD9C000EACE4B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF462281AEFD9C000EACE4B /* ViewController.m */; };
@@ -30,13 +31,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FB9A52ED1AF08F0800392B68 /* UIScrollView+HYRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HYRefresh.h"; sourceTree = "<group>"; };
-		FB9A52EE1AF08F0800392B68 /* UIScrollView+HYRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HYRefresh.m"; sourceTree = "<group>"; };
-		FB9A52F41AF0D6D100392B68 /* HYStatusBarWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStatusBarWindow.h; sourceTree = "<group>"; };
-		FB9A52F51AF0D6D100392B68 /* HYStatusBarWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStatusBarWindow.m; sourceTree = "<group>"; };
-		FB9A52F71AF0E30E00392B68 /* HYRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYRefresh.h; sourceTree = "<group>"; };
-		FBCA26EB1AF12B1700FF482C /* HYRefreshModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYRefreshModel.h; sourceTree = "<group>"; };
-		FBCA26EC1AF12B1700FF482C /* HYRefreshModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYRefreshModel.m; sourceTree = "<group>"; };
+		FB7059341AF2053A00790172 /* HYConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYConstant.h; sourceTree = "<group>"; };
+		FB7059351AF2053A00790172 /* HYConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYConstant.m; sourceTree = "<group>"; };
+		FB7059361AF2053A00790172 /* HYRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYRefresh.h; sourceTree = "<group>"; };
+		FB7059371AF2053A00790172 /* HYRefreshModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYRefreshModel.h; sourceTree = "<group>"; };
+		FB7059381AF2053A00790172 /* HYRefreshModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYRefreshModel.m; sourceTree = "<group>"; };
+		FB7059391AF2053A00790172 /* HYStatusBarWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStatusBarWindow.h; sourceTree = "<group>"; };
+		FB70593A1AF2053A00790172 /* HYStatusBarWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStatusBarWindow.m; sourceTree = "<group>"; };
+		FB70593B1AF2053A00790172 /* UIScrollView+HYRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HYRefresh.h"; sourceTree = "<group>"; };
+		FB70593C1AF2053A00790172 /* UIScrollView+HYRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HYRefresh.m"; sourceTree = "<group>"; };
 		FBF4621D1AEFD9C000EACE4B /* HYRefreshDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYRefreshDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF462211AEFD9C000EACE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBF462221AEFD9C000EACE4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,24 +73,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FB9A52EC1AF08F0800392B68 /* HYStatusBarRefresh */ = {
+		FB7059331AF2053A00790172 /* HYRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				FB9A52F71AF0E30E00392B68 /* HYRefresh.h */,
-				FB9A52ED1AF08F0800392B68 /* UIScrollView+HYRefresh.h */,
-				FB9A52EE1AF08F0800392B68 /* UIScrollView+HYRefresh.m */,
-				FB9A52F41AF0D6D100392B68 /* HYStatusBarWindow.h */,
-				FB9A52F51AF0D6D100392B68 /* HYStatusBarWindow.m */,
-				FBCA26EB1AF12B1700FF482C /* HYRefreshModel.h */,
-				FBCA26EC1AF12B1700FF482C /* HYRefreshModel.m */,
+				FB7059341AF2053A00790172 /* HYConstant.h */,
+				FB7059351AF2053A00790172 /* HYConstant.m */,
+				FB7059361AF2053A00790172 /* HYRefresh.h */,
+				FB7059371AF2053A00790172 /* HYRefreshModel.h */,
+				FB7059381AF2053A00790172 /* HYRefreshModel.m */,
+				FB7059391AF2053A00790172 /* HYStatusBarWindow.h */,
+				FB70593A1AF2053A00790172 /* HYStatusBarWindow.m */,
+				FB70593B1AF2053A00790172 /* UIScrollView+HYRefresh.h */,
+				FB70593C1AF2053A00790172 /* UIScrollView+HYRefresh.m */,
 			);
-			path = HYStatusBarRefresh;
+			path = HYRefresh;
 			sourceTree = "<group>";
 		};
 		FBF462141AEFD9C000EACE4B = {
 			isa = PBXGroup;
 			children = (
-				FB9A52EC1AF08F0800392B68 /* HYStatusBarRefresh */,
 				FBF4621F1AEFD9C000EACE4B /* HYRefreshDemo */,
 				FBF462391AEFD9C000EACE4B /* HYRefreshDemoTests */,
 				FBF4621E1AEFD9C000EACE4B /* Products */,
@@ -106,6 +110,7 @@
 		FBF4621F1AEFD9C000EACE4B /* HYRefreshDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FB7059331AF2053A00790172 /* HYRefresh */,
 				FBF462241AEFD9C000EACE4B /* AppDelegate.h */,
 				FBF462251AEFD9C000EACE4B /* AppDelegate.m */,
 				FBF462271AEFD9C000EACE4B /* ViewController.h */,
@@ -244,12 +249,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB9A52F61AF0D6D100392B68 /* HYStatusBarWindow.m in Sources */,
-				FB9A52EF1AF08F0800392B68 /* UIScrollView+HYRefresh.m in Sources */,
-				FBCA26ED1AF12B1700FF482C /* HYRefreshModel.m in Sources */,
 				FBF462291AEFD9C000EACE4B /* ViewController.m in Sources */,
 				FBF462261AEFD9C000EACE4B /* AppDelegate.m in Sources */,
+				FB70593F1AF2053A00790172 /* HYStatusBarWindow.m in Sources */,
+				FB70593D1AF2053A00790172 /* HYConstant.m in Sources */,
 				FBF462231AEFD9C000EACE4B /* main.m in Sources */,
+				FB70593E1AF2053A00790172 /* HYRefreshModel.m in Sources */,
+				FB7059401AF2053A00790172 /* UIScrollView+HYRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -119,14 +119,6 @@ static CGFloat const kDelayTime = 1.5;
         self.frontLabel.frame = (CGRect){CGPointMake(0, -kStatusBarHeight),self.frontLabel.frame.size};
         self.bottomLabel.frame = (CGRect){CGPointZero,self.bottomLabel.frame.size};
     } completion:^(BOOL finished) {
-//        [UIView animateWithDuration:kDurationTime delay:kDelayTime options:UIViewAnimationOptionTransitionNone animations:^{
-//            self.bottomLabel.frame = self.frontLabel.frame;
-//        } completion:^(BOOL finished) {
-//            self.window.hidden = YES;
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [self private_resetAllViews];
-//            });
-//        }];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDelayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.window.hidden = YES;
             dispatch_async(dispatch_get_main_queue(), ^{
