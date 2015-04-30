@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB9A52EF1AF08F0800392B68 /* UIScrollView+HYRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9A52EE1AF08F0800392B68 /* UIScrollView+HYRefresh.m */; };
+		FB9A52F61AF0D6D100392B68 /* HYStatusBarWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9A52F51AF0D6D100392B68 /* HYStatusBarWindow.m */; };
+		FBCA26ED1AF12B1700FF482C /* HYRefreshModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA26EC1AF12B1700FF482C /* HYRefreshModel.m */; };
+		FBF462231AEFD9C000EACE4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF462221AEFD9C000EACE4B /* main.m */; };
+		FBF462261AEFD9C000EACE4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF462251AEFD9C000EACE4B /* AppDelegate.m */; };
+		FBF462291AEFD9C000EACE4B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF462281AEFD9C000EACE4B /* ViewController.m */; };
+		FBF4622C1AEFD9C000EACE4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF4622A1AEFD9C000EACE4B /* Main.storyboard */; };
+		FBF4622E1AEFD9C000EACE4B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF4622D1AEFD9C000EACE4B /* Images.xcassets */; };
+		FBF462311AEFD9C000EACE4B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF4622F1AEFD9C000EACE4B /* LaunchScreen.xib */; };
+		FBF4623D1AEFD9C000EACE4B /* HYRefreshDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF4623C1AEFD9C000EACE4B /* HYRefreshDemoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FBF462371AEFD9C000EACE4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBF462151AEFD9C000EACE4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBF4621C1AEFD9C000EACE4B;
+			remoteInfo = HYRefreshDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FB9A52ED1AF08F0800392B68 /* UIScrollView+HYRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HYRefresh.h"; sourceTree = "<group>"; };
+		FB9A52EE1AF08F0800392B68 /* UIScrollView+HYRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HYRefresh.m"; sourceTree = "<group>"; };
+		FB9A52F41AF0D6D100392B68 /* HYStatusBarWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYStatusBarWindow.h; sourceTree = "<group>"; };
+		FB9A52F51AF0D6D100392B68 /* HYStatusBarWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYStatusBarWindow.m; sourceTree = "<group>"; };
+		FB9A52F71AF0E30E00392B68 /* HYRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYRefresh.h; sourceTree = "<group>"; };
+		FBCA26EB1AF12B1700FF482C /* HYRefreshModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYRefreshModel.h; sourceTree = "<group>"; };
+		FBCA26EC1AF12B1700FF482C /* HYRefreshModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYRefreshModel.m; sourceTree = "<group>"; };
+		FBF4621D1AEFD9C000EACE4B /* HYRefreshDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYRefreshDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF462211AEFD9C000EACE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBF462221AEFD9C000EACE4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FBF462241AEFD9C000EACE4B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FBF462251AEFD9C000EACE4B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FBF462271AEFD9C000EACE4B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FBF462281AEFD9C000EACE4B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FBF4622B1AEFD9C000EACE4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FBF4622D1AEFD9C000EACE4B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FBF462301AEFD9C000EACE4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FBF462361AEFD9C000EACE4B /* HYRefreshDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HYRefreshDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF4623B1AEFD9C000EACE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBF4623C1AEFD9C000EACE4B /* HYRefreshDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYRefreshDemoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FBF4621A1AEFD9C000EACE4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBF462331AEFD9C000EACE4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB9A52EC1AF08F0800392B68 /* HYStatusBarRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				FB9A52F71AF0E30E00392B68 /* HYRefresh.h */,
+				FB9A52ED1AF08F0800392B68 /* UIScrollView+HYRefresh.h */,
+				FB9A52EE1AF08F0800392B68 /* UIScrollView+HYRefresh.m */,
+				FB9A52F41AF0D6D100392B68 /* HYStatusBarWindow.h */,
+				FB9A52F51AF0D6D100392B68 /* HYStatusBarWindow.m */,
+				FBCA26EB1AF12B1700FF482C /* HYRefreshModel.h */,
+				FBCA26EC1AF12B1700FF482C /* HYRefreshModel.m */,
+			);
+			path = HYStatusBarRefresh;
+			sourceTree = "<group>";
+		};
+		FBF462141AEFD9C000EACE4B = {
+			isa = PBXGroup;
+			children = (
+				FB9A52EC1AF08F0800392B68 /* HYStatusBarRefresh */,
+				FBF4621F1AEFD9C000EACE4B /* HYRefreshDemo */,
+				FBF462391AEFD9C000EACE4B /* HYRefreshDemoTests */,
+				FBF4621E1AEFD9C000EACE4B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FBF4621E1AEFD9C000EACE4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FBF4621D1AEFD9C000EACE4B /* HYRefreshDemo.app */,
+				FBF462361AEFD9C000EACE4B /* HYRefreshDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FBF4621F1AEFD9C000EACE4B /* HYRefreshDemo */ = {
+			isa = PBXGroup;
+			children = (
+				FBF462241AEFD9C000EACE4B /* AppDelegate.h */,
+				FBF462251AEFD9C000EACE4B /* AppDelegate.m */,
+				FBF462271AEFD9C000EACE4B /* ViewController.h */,
+				FBF462281AEFD9C000EACE4B /* ViewController.m */,
+				FBF4622A1AEFD9C000EACE4B /* Main.storyboard */,
+				FBF4622D1AEFD9C000EACE4B /* Images.xcassets */,
+				FBF4622F1AEFD9C000EACE4B /* LaunchScreen.xib */,
+				FBF462201AEFD9C000EACE4B /* Supporting Files */,
+			);
+			path = HYRefreshDemo;
+			sourceTree = "<group>";
+		};
+		FBF462201AEFD9C000EACE4B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBF462211AEFD9C000EACE4B /* Info.plist */,
+				FBF462221AEFD9C000EACE4B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FBF462391AEFD9C000EACE4B /* HYRefreshDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				FBF4623C1AEFD9C000EACE4B /* HYRefreshDemoTests.m */,
+				FBF4623A1AEFD9C000EACE4B /* Supporting Files */,
+			);
+			path = HYRefreshDemoTests;
+			sourceTree = "<group>";
+		};
+		FBF4623A1AEFD9C000EACE4B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBF4623B1AEFD9C000EACE4B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FBF4621C1AEFD9C000EACE4B /* HYRefreshDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBF462401AEFD9C000EACE4B /* Build configuration list for PBXNativeTarget "HYRefreshDemo" */;
+			buildPhases = (
+				FBF462191AEFD9C000EACE4B /* Sources */,
+				FBF4621A1AEFD9C000EACE4B /* Frameworks */,
+				FBF4621B1AEFD9C000EACE4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HYRefreshDemo;
+			productName = HYRefreshDemo;
+			productReference = FBF4621D1AEFD9C000EACE4B /* HYRefreshDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FBF462351AEFD9C000EACE4B /* HYRefreshDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBF462431AEFD9C000EACE4B /* Build configuration list for PBXNativeTarget "HYRefreshDemoTests" */;
+			buildPhases = (
+				FBF462321AEFD9C000EACE4B /* Sources */,
+				FBF462331AEFD9C000EACE4B /* Frameworks */,
+				FBF462341AEFD9C000EACE4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FBF462381AEFD9C000EACE4B /* PBXTargetDependency */,
+			);
+			name = HYRefreshDemoTests;
+			productName = HYRefreshDemoTests;
+			productReference = FBF462361AEFD9C000EACE4B /* HYRefreshDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FBF462151AEFD9C000EACE4B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = jimubox;
+				TargetAttributes = {
+					FBF4621C1AEFD9C000EACE4B = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					FBF462351AEFD9C000EACE4B = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = FBF4621C1AEFD9C000EACE4B;
+					};
+				};
+			};
+			buildConfigurationList = FBF462181AEFD9C000EACE4B /* Build configuration list for PBXProject "HYRefreshDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FBF462141AEFD9C000EACE4B;
+			productRefGroup = FBF4621E1AEFD9C000EACE4B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FBF4621C1AEFD9C000EACE4B /* HYRefreshDemo */,
+				FBF462351AEFD9C000EACE4B /* HYRefreshDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FBF4621B1AEFD9C000EACE4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF4622C1AEFD9C000EACE4B /* Main.storyboard in Resources */,
+				FBF462311AEFD9C000EACE4B /* LaunchScreen.xib in Resources */,
+				FBF4622E1AEFD9C000EACE4B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBF462341AEFD9C000EACE4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FBF462191AEFD9C000EACE4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB9A52F61AF0D6D100392B68 /* HYStatusBarWindow.m in Sources */,
+				FB9A52EF1AF08F0800392B68 /* UIScrollView+HYRefresh.m in Sources */,
+				FBCA26ED1AF12B1700FF482C /* HYRefreshModel.m in Sources */,
+				FBF462291AEFD9C000EACE4B /* ViewController.m in Sources */,
+				FBF462261AEFD9C000EACE4B /* AppDelegate.m in Sources */,
+				FBF462231AEFD9C000EACE4B /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBF462321AEFD9C000EACE4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF4623D1AEFD9C000EACE4B /* HYRefreshDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FBF462381AEFD9C000EACE4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBF4621C1AEFD9C000EACE4B /* HYRefreshDemo */;
+			targetProxy = FBF462371AEFD9C000EACE4B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FBF4622A1AEFD9C000EACE4B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBF4622B1AEFD9C000EACE4B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FBF4622F1AEFD9C000EACE4B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBF462301AEFD9C000EACE4B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FBF4623E1AEFD9C000EACE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FBF4623F1AEFD9C000EACE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FBF462411AEFD9C000EACE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HYRefreshDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FBF462421AEFD9C000EACE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HYRefreshDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FBF462441AEFD9C000EACE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HYRefreshDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYRefreshDemo.app/HYRefreshDemo";
+			};
+			name = Debug;
+		};
+		FBF462451AEFD9C000EACE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HYRefreshDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HYRefreshDemo.app/HYRefreshDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FBF462181AEFD9C000EACE4B /* Build configuration list for PBXProject "HYRefreshDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF4623E1AEFD9C000EACE4B /* Debug */,
+				FBF4623F1AEFD9C000EACE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBF462401AEFD9C000EACE4B /* Build configuration list for PBXNativeTarget "HYRefreshDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF462411AEFD9C000EACE4B /* Debug */,
+				FBF462421AEFD9C000EACE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBF462431AEFD9C000EACE4B /* Build configuration list for PBXNativeTarget "HYRefreshDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF462441AEFD9C000EACE4B /* Debug */,
+				FBF462451AEFD9C000EACE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FBF462151AEFD9C000EACE4B /* Project object */;
+}
