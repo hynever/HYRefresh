@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/** 淡入淡出持续时间 */
+#define kFadeDuration 0.3
+
 @interface HYStatusBarWindow : NSObject
 
 /**
