@@ -9,13 +9,16 @@
 #import "UIScrollView+HYRefresh.h"
 #import "HYStatusBarWindow.h"
 #import "HYRefreshModel.h"
-#import "HYConstant.h"
 #import <objc/runtime.h>
 
 /**
  *  UIScrollView的contentOffset属性名称
  */
 static NSString * const HYRefreshContentOffset = @"contentOffset";
+/**
+ *  产生动画下拉的高度
+ */
+static CGFloat const HYRefreshHeight = 64.0f;
 
 
 @interface UIScrollView()
@@ -26,28 +29,24 @@ static NSString * const HYRefreshContentOffset = @"contentOffset";
 
 @implementation UIScrollView(HYRefresh)
 
-
-#pragma mark 使用默认Message的下拉刷新
+/**
+ *  添加头部刷新
+ *
+ *  @param callback 刷新要执行的代码
+ */
 -(void)addHeaderWithCallback:(void(^)())callback
 {
-    [self addHeaderWithMessage:nil Callback:callback];
-}
-
-#pragma mark 带有自定义Message的下拉刷新
--(void)addHeaderWithMessage:(NSString *)msg Callback:(void(^)())callback
-{
-    if (self.model) return;
     self.model = [HYRefreshModel new];
     self.model.originContentOffsetTop = self.contentInset.top;
     self.model.callBack = callback;
-    self.model.message = msg;
+    self.contentOffset = CGPointMake(0, -64);
     [self addObserver:self forKeyPath:HYRefreshContentOffset options:NSKeyValueObservingOptionNew context:nil];
 }
 
 #pragma mark KVO监听的方法
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if ([HYRefreshContentOffset isEqualToString:keyPath] && self.contentOffset.y < 0) {
+    if ([HYRefreshContentOffset isEqualToString:keyPath]) {
         CGFloat dragHeight = ABS(self.contentOffset.y - self.model.originContentOffsetTop);
         CGFloat minHeight = self.model.originContentOffsetTop+HYRefreshHeight;
         CGFloat maxHeight = minHeight+8;
@@ -55,7 +54,7 @@ static NSString * const HYRefreshContentOffset = @"contentOffset";
             //如果松开拖拽了，就刷新，否则不刷新
             if (!self.isDragging) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [HYStatusBarWindow showLoadingWithMessage:self.model.message ? self.model.message : HYRefrshLoadingMessage];
+                    [HYStatusBarWindow showLoadingWithMessage:@"正在刷新..."];
                     if (self.model.callBack) {
                         self.model.callBack();
                     }
@@ -65,27 +64,18 @@ static NSString * const HYRefreshContentOffset = @"contentOffset";
     }
 }
 
-#pragma mark 手动调用开始刷新
--(void)startRefresh
-{
-    CGFloat dragHeight = ABS(HYRefreshHeight - self.contentInset.top);
-    self.contentOffset = CGPointMake(0, -dragHeight);
-}
-
-#pragma mark 带有提示信息的结束刷新
--(void)endRefreshWithMessage:(NSString *)msg
+-(void)hideWithMessage:(NSString *)msg
 {
     [HYStatusBarWindow hideLoadingWithMessage:msg];
 }
 
-#pragma mark 直接结束刷新
--(void)endRefresh
+-(void)hide
 {
     [HYStatusBarWindow hide];
 }
 
 #pragma mark - get&set方法
-#pragma mark set&get/model
+#pragma mark set/originContentOffsetTop
 static char HYModelKey;
 -(void)setModel:(HYRefreshModel *)model
 {
