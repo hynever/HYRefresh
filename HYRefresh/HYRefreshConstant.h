@@ -22,4 +22,10 @@ extern CGFloat HYRefreshHeight;
  */
 extern NSString * const HYRefrshLoadingMessage;
 
+
+/**
+ *  UIScrollView的contentOffset属性名称
+ */
+UIKIT_EXTERN NSString * const HYRefreshContentOffset;
+
 #endif

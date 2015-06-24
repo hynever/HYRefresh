@@ -9,18 +9,13 @@
 #import "UIScrollView+HYRefresh.h"
 #import "HYStatusBarWindow.h"
 #import "HYRefreshModel.h"
-#import "HYConstant.h"
+#import "HYRefreshConstant.h"
 #import <objc/runtime.h>
+#import "HYRefreshListenerView.h"
 
-/**
- *  UIScrollView的contentOffset属性名称
- */
-static NSString * const HYRefreshContentOffset = @"contentOffset";
+@interface UIScrollView()<UIScrollViewDelegate>
 
-
-@interface UIScrollView()
-
-@property(nonatomic,strong) HYRefreshModel *model;
+@property(nonatomic,strong) HYRefreshListenerView *listenerView;
 
 @end
 
@@ -28,74 +23,69 @@ static NSString * const HYRefreshContentOffset = @"contentOffset";
 
 
 #pragma mark 使用默认Message的下拉刷新
--(void)addHeaderWithCallback:(void(^)())callback
+-(void)addHeaderRefreshWithCallback:(void(^)())callback
 {
-    [self addHeaderWithMessage:nil Callback:callback];
+    [self addHeaderRefreshWithMessage:nil Callback:callback];
 }
 
 #pragma mark 带有自定义Message的下拉刷新
--(void)addHeaderWithMessage:(NSString *)msg Callback:(void(^)())callback
+-(void)addHeaderRefreshWithMessage:(NSString *)msg Callback:(void(^)())callback
 {
-    if (self.model) return;
-    self.model = [HYRefreshModel new];
-    self.model.originContentOffsetTop = self.contentInset.top;
-    self.model.callBack = callback;
-    self.model.message = msg;
-    [self addObserver:self forKeyPath:HYRefreshContentOffset options:NSKeyValueObservingOptionNew context:nil];
-}
-
-#pragma mark KVO监听的方法
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if ([HYRefreshContentOffset isEqualToString:keyPath] && self.contentOffset.y < 0) {
-        CGFloat dragHeight = ABS(self.contentOffset.y - self.model.originContentOffsetTop);
-        CGFloat minHeight = self.model.originContentOffsetTop+HYRefreshHeight;
-        CGFloat maxHeight = minHeight+8;
-        if (dragHeight >= minHeight && dragHeight <= maxHeight) {
-            //如果松开拖拽了，就刷新，否则不刷新
-            if (!self.isDragging) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [HYStatusBarWindow showLoadingWithMessage:self.model.message ? self.model.message : HYRefrshLoadingMessage];
-                    if (self.model.callBack) {
-                        self.model.callBack();
-                    }
-                });
-            }
-        }
-    }
+    if (self.listenerView) return;
+    
+    self.listenerView = [[HYRefreshListenerView alloc] initWithFrame:CGRectZero];
+    [self addSubview:self.listenerView];
+    
+    HYRefreshModel *refreshModel = [HYRefreshModel new];
+    refreshModel.originContentOffsetTop = self.contentInset.top;
+    refreshModel.callBack = callback;
+    refreshModel.message = msg ? msg : HYRefrshLoadingMessage;
+    self.listenerView.refreshModel = refreshModel;
 }
 
 #pragma mark 手动调用开始刷新
 -(void)startRefresh
 {
-    CGFloat dragHeight = ABS(HYRefreshHeight - self.contentInset.top);
-    self.contentOffset = CGPointMake(0, -dragHeight);
+    [self.listenerView endRefresh];
+    [self.listenerView startRefresh];
 }
 
 #pragma mark 带有提示信息的结束刷新
 -(void)endRefreshWithMessage:(NSString *)msg
 {
-    [HYStatusBarWindow hideLoadingWithMessage:msg];
+    [self.listenerView endRefreshWithMessage:msg ? msg : HYRefreshEndRefreshMessage];
+}
+
+#pragma mark 带有成功提示信息的结束
+-(void)endRefreshWithSuccess
+{
+    [self.listenerView endRefreshWithMessage:HYRefreshSuccessRefreshMessage];
+}
+
+#pragma mark 带有失败提示信息的结束
+-(void)endRefreshWithFailure
+{
+    [self.listenerView endRefreshWithMessage:HYRefreshFailureRefreshMessage];
 }
 
 #pragma mark 直接结束刷新
 -(void)endRefresh
 {
-    [HYStatusBarWindow hide];
+    [self.listenerView endRefresh];
 }
 
 #pragma mark - get&set方法
 #pragma mark set&get/model
-static char HYModelKey;
--(void)setModel:(HYRefreshModel *)model
+static char HYListenerViewKey;
+-(void)setListenerView:(HYRefreshListenerView *)listenerView
 {
-    objc_setAssociatedObject(self, &HYModelKey, model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &HYListenerViewKey, listenerView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(HYRefreshModel *)model
+-(HYRefreshListenerView *)listenerView
 {
-    HYRefreshModel *model = (HYRefreshModel *)objc_getAssociatedObject(self, &HYModelKey);
-    return model;
+    HYRefreshListenerView *LISTENERVIEW = (HYRefreshListenerView *)objc_getAssociatedObject(self, &HYListenerViewKey);
+    return LISTENERVIEW;
 }
 
 @end

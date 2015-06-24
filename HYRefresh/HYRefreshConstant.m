@@ -15,11 +15,16 @@
 /**
  *  产生动画下拉的高度
  */
-CGFloat const HYRefreshHeight = 64.0f;
+CGFloat const HYRefreshHeight = 80.0f;
 
 /**
  *  默认刷新状态的文字
  */
 NSString * const HYRefrshLoadingMessage = @"正在刷新...";
+
+/**
+ *  UIScrollView的contentOffset属性名称
+ */
+NSString * const HYRefreshContentOffset = @"contentOffset";
 
 #endif

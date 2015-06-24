@@ -7,6 +7,8 @@
 //
 
 #import "HYStatusBarWindow.h"
+#import "CWStatusBarNotification.h"
+#import "HYRefreshConstant.h"
 
 /**
  *  屏幕的尺寸
@@ -28,8 +30,6 @@ static CGFloat const kDelayTime = 1.5;
 
 @interface HYStatusBarWindow()
 
-@property(nonatomic,strong) UIWindow *window;
-
 //最前面那个label
 @property(nonatomic,strong) UILabel *frontLabel;
 //底部那个label
@@ -39,27 +39,6 @@ static CGFloat const kDelayTime = 1.5;
 
 @end
 
-@interface HYStatusWindow : UIWindow
-
-@end
-
-@implementation HYStatusWindow
-
-- (void)setHidden:(BOOL)hidden{
-    [super setHidden:hidden];
-    static BOOL ing = NO;
-    if(ing && hidden) return;
-    ing = YES;
-    self.alpha = hidden;
-    [UIView animateWithDuration:kFadeDuration animations:^{
-        self.alpha = !hidden;
-    } completion:^(BOOL finished) {
-        [super setHidden:!self.alpha];
-        ing = NO;
-    }];
-}
-
-@end
 
 @implementation HYStatusBarWindow
 
@@ -73,13 +52,13 @@ static CGFloat const kDelayTime = 1.5;
 #pragma mark 展示loading状态的方法
 +(void)showLoadingWithMessage:(NSString *)msg
 {
-    [[HYStatusBarWindow sharedStatusBarWindow]instance_showLoadingWithMessage:msg];
+    [[HYStatusBarWindow sharedStatusBarWindow] instance_showLoadingWithMessage:msg];
 }
 
 #pragma mark 隐藏带有Loading效果的hud的方法
-+(void)hideLoadingWithMessage:(NSString *)msg
++(void)hideWithMessage:(NSString *)msg
 {
-    [[HYStatusBarWindow sharedStatusBarWindow] instance_hideLoadingWithMessage:msg];
+    [[HYStatusBarWindow sharedStatusBarWindow] instance_hideWithMessage:msg];
 }
 
 +(void)hide
@@ -100,6 +79,21 @@ static CGFloat const kDelayTime = 1.5;
     return _statusBarWindow;
 }
 
+#pragma mark - 生命周期方法
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor blackColor];
+        self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+        self.windowLevel = UIWindowLevelAlert;
+        self.frame = CGRectMake(0, 0, kWinSize.width, kStatusBarHeight);
+        self.clipsToBounds = YES;
+        self.hidden = NO;
+    }
+    return self;
+}
+
 #pragma mark - 实例方法
 #pragma mark 展示消息的方法
 -(void)instance_showMessage:(NSString *)msg
@@ -107,14 +101,16 @@ static CGFloat const kDelayTime = 1.5;
     if (self.isRefreshing) return;
     self.isRefreshing = YES;
     self.frontLabel.text = msg;
+    self.hidden = NO;
+    [self private_resetFrame:self.frontLabel];
     [UIView animateWithDuration:kDurationTime animations:^{
         self.frontLabel.frame = (CGRect){CGPointZero,self.frontLabel.frame.size};
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:kDurationTime delay:kDelayTime options:UIViewAnimationOptionTransitionNone animations:^{
             self.frontLabel.frame = (CGRect){CGPointMake(0, -kStatusBarHeight),self.frontLabel.frame.size};
         } completion:^(BOOL finished) {
-            self.window.hidden = YES;
             dispatch_async(dispatch_get_main_queue(), ^{
+                self.hidden = YES;
                 [self private_resetAllViews];
             });
         }];
@@ -127,22 +123,26 @@ static CGFloat const kDelayTime = 1.5;
     if (self.isRefreshing) return;
     self.isRefreshing = YES;
     self.frontLabel.text = msg;
+    self.hidden = NO;
+    [self private_resetFrame:self.frontLabel];
     [UIView animateWithDuration:kDurationTime animations:^{
         self.frontLabel.frame = (CGRect){CGPointZero,self.frontLabel.frame.size};
     } completion:nil];
 }
 
-#pragma mark 隐藏loading状态的实例方法
--(void)instance_hideLoadingWithMessage:(NSString *)msg
+#pragma mark 带有文字的隐藏实例方法
+-(void)instance_hideWithMessage:(NSString *)msg
 {
     if (!self.isRefreshing) return;
-    self.bottomLabel.text = msg;
+    self.bottomLabel.text = msg.length > 0 ? msg : HYRefreshEndRefreshMessage;
+    [self private_resetFrame:self.bottomLabel];
     [UIView animateWithDuration:kDurationTime animations:^{
         self.frontLabel.frame = (CGRect){CGPointMake(0, -kStatusBarHeight),self.frontLabel.frame.size};
         self.bottomLabel.frame = (CGRect){CGPointZero,self.bottomLabel.frame.size};
     } completion:^(BOOL finished) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDelayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.window.hidden = YES;
+            self.hidden = YES;
+            self.bottomLabel.frame = (CGRect){CGPointMake(0, -kStatusBarHeight),self.bottomLabel.frame.size};
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self private_resetAllViews];
             });
@@ -150,34 +150,35 @@ static CGFloat const kDelayTime = 1.5;
     }];
 }
 
+#pragma mark 直接隐藏的方法
 -(void)instance_hide{
     if (!self.isRefreshing) return;
-    self.window.hidden = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.hidden = YES;
         [self private_resetAllViews];
     });
 }
 
-#pragma mark - set&get方法
--(UIWindow *)window
-{
-    if (!_window) {
-        _window = [[HYStatusWindow alloc] init];
-        _window.backgroundColor = [UIColor blackColor];
-        _window.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
-        _window.windowLevel = UIWindowLevelAlert;
-        _window.frame = CGRectMake(0, 0, kWinSize.width, kStatusBarHeight);
-        _window.clipsToBounds = YES;
-        _window.hidden = NO;
-    }
-    return _window;
+#pragma mark - 重写方法
+- (void)setHidden:(BOOL)hidden{
+    [super setHidden:hidden];
+    static BOOL ing = NO;
+    if(ing && hidden) return;
+    ing = YES;
+    self.alpha = hidden;
+    [UIView animateWithDuration:kFadeDuration animations:^{
+        self.alpha = !hidden;
+    } completion:^(BOOL finished) {
+        [super setHidden:!self.alpha];
+        ing = NO;
+    }];
 }
 
 -(UILabel *)frontLabel
 {
     if (!_frontLabel) {
         _frontLabel = [self private_createLabelWithMessage:nil];
-        [self.window addSubview:_frontLabel];
+        [self addSubview:_frontLabel];
     }
     return _frontLabel;
 }
@@ -186,7 +187,7 @@ static CGFloat const kDelayTime = 1.5;
 {
     if (!_bottomLabel) {
         _bottomLabel = [self private_createLabelWithMessage:nil];
-        [self.window addSubview:_bottomLabel];
+        [self addSubview:_bottomLabel];
     }
     return _bottomLabel;
 }
@@ -206,13 +207,8 @@ static CGFloat const kDelayTime = 1.5;
 
 -(void)private_resetAllViews
 {
-    [_frontLabel removeFromSuperview];
-    _frontLabel = nil;
-    [_bottomLabel removeFromSuperview];
-    _bottomLabel = nil;
     self.isRefreshing = NO;
-    self.window.hidden = YES;
-    self.window = nil;
+    self.hidden = YES;
 }
 
 -(void)private_resetFrame:(UILabel *)label{

@@ -17,7 +17,7 @@
  *
  *  @param callback 刷新要执行的代码
  */
--(void)addHeaderWithCallback:(void(^)())callback;
+-(void)addHeaderRefreshWithCallback:(void(^)())callback;
 
 /**
  *  带有可以自定义Message的下拉刷新
@@ -25,7 +25,7 @@
  *  @param msg      自定义Message
  *  @param callback 刷新要执行的代码
  */
--(void)addHeaderWithMessage:(NSString *)msg Callback:(void(^)())callback;
+-(void)addHeaderRefreshWithMessage:(NSString *)msg Callback:(void(^)())callback;
 
 /**
  *  手动调用刷新
@@ -38,6 +38,16 @@
  *  @param msg 提示信息
  */
 -(void)endRefreshWithMessage:(NSString *)msg;
+
+/**
+ *  带有成功提示信息的结束
+ */
+-(void)endRefreshWithSuccess;
+
+/**
+ *  带有失败提示信息的结束
+ */
+-(void)endRefreshWithFailure;
 
 /**
  *  直接隐藏

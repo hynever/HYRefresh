@@ -9,83 +9,71 @@
 #import "UIScrollView+HYRefresh.h"
 #import "HYStatusBarWindow.h"
 #import "HYRefreshModel.h"
+#import "HYRefreshConstant.h"
 #import <objc/runtime.h>
+#import "HYRefreshListenerView.h"
 
-/**
- *  UIScrollView的contentOffset属性名称
- */
-static NSString * const HYRefreshContentOffset = @"contentOffset";
-/**
- *  产生动画下拉的高度
- */
-static CGFloat const HYRefreshHeight = 64.0f;
+@interface UIScrollView()<UIScrollViewDelegate>
 
-
-@interface UIScrollView()
-
-@property(nonatomic,strong) HYRefreshModel *model;
+@property(nonatomic,strong) HYRefreshListenerView *listenerView;
 
 @end
 
 @implementation UIScrollView(HYRefresh)
 
-/**
- *  添加头部刷新
- *
- *  @param callback 刷新要执行的代码
- */
--(void)addHeaderWithCallback:(void(^)())callback
+
+#pragma mark 使用默认Message的下拉刷新
+-(void)addHeaderRefreshWithCallback:(void(^)())callback
 {
-    self.model = [HYRefreshModel new];
-    self.model.originContentOffsetTop = self.contentInset.top;
-    self.model.callBack = callback;
-    self.contentOffset = CGPointMake(0, -64);
-    [self addObserver:self forKeyPath:HYRefreshContentOffset options:NSKeyValueObservingOptionNew context:nil];
+    [self addHeaderRefreshWithMessage:nil Callback:callback];
 }
 
-#pragma mark KVO监听的方法
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+#pragma mark 带有自定义Message的下拉刷新
+-(void)addHeaderRefreshWithMessage:(NSString *)msg Callback:(void(^)())callback
 {
-    if ([HYRefreshContentOffset isEqualToString:keyPath]) {
-        CGFloat dragHeight = ABS(self.contentOffset.y - self.model.originContentOffsetTop);
-        CGFloat minHeight = self.model.originContentOffsetTop+HYRefreshHeight;
-        CGFloat maxHeight = minHeight+8;
-        if (dragHeight >= minHeight && dragHeight <= maxHeight) {
-            //如果松开拖拽了，就刷新，否则不刷新
-            if (!self.isDragging) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [HYStatusBarWindow showLoadingWithMessage:@"正在刷新..."];
-                    if (self.model.callBack) {
-                        self.model.callBack();
-                    }
-                });
-            }
-        }
-    }
+    if (self.listenerView) return;
+    
+    self.listenerView = [[HYRefreshListenerView alloc] initWithFrame:CGRectZero];
+    [self addSubview:self.listenerView];
+    
+    HYRefreshModel *refreshModel = [HYRefreshModel new];
+    refreshModel.originContentOffsetTop = self.contentInset.top;
+    refreshModel.callBack = callback;
+    refreshModel.message = msg;
+    self.listenerView.refreshModel = refreshModel;
 }
 
--(void)hideWithMessage:(NSString *)msg
+#pragma mark 手动调用开始刷新
+-(void)startRefresh
 {
-    [HYStatusBarWindow hideLoadingWithMessage:msg];
+    [self.listenerView endRefresh];
+    [self.listenerView startRefresh];
 }
 
--(void)hide
+#pragma mark 带有提示信息的结束刷新
+-(void)endRefreshWithMessage:(NSString *)msg
 {
-    [HYStatusBarWindow hide];
+    [self.listenerView endRefreshWithMessage:msg];
+}
+
+#pragma mark 直接结束刷新
+-(void)endRefresh
+{
+    [self.listenerView endRefresh];
 }
 
 #pragma mark - get&set方法
-#pragma mark set/originContentOffsetTop
-static char HYModelKey;
--(void)setModel:(HYRefreshModel *)model
+#pragma mark set&get/model
+static char HYListenerViewKey;
+-(void)setListenerView:(HYRefreshListenerView *)listenerView
 {
-    objc_setAssociatedObject(self, &HYModelKey, model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &HYListenerViewKey, listenerView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(HYRefreshModel *)model
+-(HYRefreshListenerView *)listenerView
 {
-    HYRefreshModel *model = (HYRefreshModel *)objc_getAssociatedObject(self, &HYModelKey);
-    return model;
+    HYRefreshListenerView *LISTENERVIEW = (HYRefreshListenerView *)objc_getAssociatedObject(self, &HYListenerViewKey);
+    return LISTENERVIEW;
 }
 
 @end

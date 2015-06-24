@@ -17,18 +17,31 @@
  *
  *  @param callback 刷新要执行的代码
  */
--(void)addHeaderWithCallback:(void(^)())callback;
+-(void)addHeaderRefreshWithCallback:(void(^)())callback;
+
+/**
+ *  带有可以自定义Message的下拉刷新
+ *
+ *  @param msg      自定义Message
+ *  @param callback 刷新要执行的代码
+ */
+-(void)addHeaderRefreshWithMessage:(NSString *)msg Callback:(void(^)())callback;
+
+/**
+ *  手动调用刷新
+ */
+-(void)startRefresh;
 
 /**
  *  带有提示信息的隐藏
  *
  *  @param msg 提示信息
  */
--(void)hideWithMessage:(NSString *)msg;
+-(void)endRefreshWithMessage:(NSString *)msg;
 
 /**
  *  直接隐藏
  */
--(void)hide;
+-(void)endRefresh;
 
 @end

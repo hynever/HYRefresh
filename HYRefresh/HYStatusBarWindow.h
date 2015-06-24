@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/** 淡入淡出持续时间 */
+#define kFadeDuration 0.3
+
 @interface HYStatusBarWindow : NSObject
 
 /**
@@ -27,11 +30,9 @@
 +(void)showLoadingWithMessage:(NSString *)msg;
 
 /**
- *  隐藏load状态的hud
- *
  *  @param msg 最后即将推出的时候的文字
  */
-+(void)hideLoadingWithMessage:(NSString *)msg;
++(void)hideWithMessage:(NSString *)msg;
 
 /**
  *  立马隐藏window
